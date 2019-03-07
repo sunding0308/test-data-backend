@@ -45,7 +45,6 @@
         </div>
         <div class="detail" id="chart"></div>
     </body>
-    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.common.js"></script>
 </html>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
