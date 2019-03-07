@@ -1,0 +1,122 @@
+body {
+    background-color: #F3F3F3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 14px;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.header {
+    color: #fff;
+    background-color: #000;
+    height: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-setting {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #E0DEDE;
+}
+.header-setting .title {
+    color: #242424;
+    width: 38px;
+}
+.header-setting .value {
+    color: #5b5b5b;
+    text-align: right;
+    margin: 10px 20px 10px 0;
+    width: calc(100% - 60px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#rating div {
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    margin-right: 10px;
+}
+#rating .star {
+    width: 29px;
+    height: 29px;
+}
+.feeling {
+    margin: 10px 25px 20px 5px;
+    color: #5b5b5b;
+    word-wrap: break-word;
+}
+.detail {
+    margin-top: 8px;
+    background-color: #fff;
+}
+.detail .row {
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.detail .single-setting {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.single-setting-date {
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+.single-setting .icon {
+    width: 20px;
+    height: 22px;
+}
+.single-setting .name {
+    color: #5b5b5b;
+    margin-left: 7px;
+}
+.single-setting .value {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #232323;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.single-setting-date .icon {
+    width: 20px;
+    height: 22px;
+}
+.single-setting-date .name {
+    color: #5b5b5b;
+    margin-left: 7px;
+}
+.single-setting-date .value {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #232323;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+@media (max-width: 320px) { 
+    .single-setting .icon {
+        width: 18px;
+        height: 20px;
+    }
+    .single-setting .name {
+        margin-left: 5px;
+    }
+    .single-setting .value {
+        margin-left: 5px;
+    }
+}

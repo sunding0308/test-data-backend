@@ -3,92 +3,115 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>详情</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/show.css') }}" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>    
     </head>
     <body>
-        <div class="row">
-            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-            <div id="current_tds" style="width:1000px;height:400px;margin-top:40px"></div>
-        </div><!-- .row -->
+        <div class="header">MOTORTEST Labs</div>
+        <div class="detail">
+            <div class="row">
+                <div class="single-setting">
+                    <image class="icon" src='/images/icon_brand.png'></image>
+                    <span class="name">设备</span>
+                    <span class="value">{{ $test->device }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="single-setting">
+                    <image class="icon" src="/images/icon_beanweight.png"></image>
+                    <span class="name">类型</span>
+                    <span class="value">{{ $test->type }}</span>
+                </div>
+                <div class="single-setting">
+                    <image class="icon" src="/images/icon_time.png"></image>
+                    <span class="name">周期</span>
+                    <span class="value">{{ $test->cycle }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="single-setting">
+                    <image class="icon" src="/images/icon_grandsize.png"></image>
+                    <span class="name">档位</span>
+                    <span class="value">{{ $test->level }}</span>
+                </div>
+                <div class="single-setting-date">
+                    <image class="icon" src="/images/icon_time.png"></image>
+                    <span class="name">日期</span>
+                    <span class="value">{{ $test->date }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail" id="chart"></div>
     </body>
     <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.common.js"></script>
 </html>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     var durations = {{ $durations }}
     var currents = {{ $currents }}
-    var myChart = echarts.init(document.getElementById('current_tds'));
-    var option = {
+    Highcharts.chart('chart',{
+    chart: {
+        type: 'line',
+        height: 320,
+    },
+    title: {
+        text: 'MOTORTEST'
+    },
+    tooltip: {
+        enabled: false,
+    },
+    plotOptions: {
+        series: {
+        marker: {
+            enabled: false
+        },
+        // lineWidth: 1,
+        enableMouseTracking: false
+        }
+    },
+    series: [
+        {
+        name: '电流',
+        data: currents,
+        color:'#53B2F0',
+        fillColor: {
+            linearGradient: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1
+            },
+            stops: [
+            [0, '#83c0e8'],
+            [1, '#b9e1f5']
+            ]
+        },
+        }
+    ],
+    xAxis: {
+        floor:0,
+        categories: durations,
+        labels: {
+            formatter: function() {
+                return this.value.toFixed(2);
+            }
+        },
+        lineWidth: 2,
+        lineColor: '#ccc',
+        min: 0,
+        startOnTick: true,
+    },
+    yAxis: {
+        gridLineWidth: 1,
         title: {
-            text: '电流变化统计'
-        },
-        tooltip: {
-            trigger: 'axis',
-        },
-        legend: {
-            data:['电流值']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {
-                    title: '保存'
-                }
-            }
-        },
-        xAxis: {
-            type: 'category',
-            // boundaryGap: false,
-            data: durations,
-            // axisLabel: {
-            //     rotate: 45
-            // }
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel:{
-                formatter:'{value}'
-            }
-        },
-        series: [
-            {
-                name:'电流值',
-                type:'line',
-                data:currents
-            }
-        ]
-    };
-
-    // myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-    // current_tds = [];
-    // durations = [];
-
-    // for(var i = 0 ; i < 1; i++){
-    //     current_tds.push(1);
-    //     durations.push(1);
-    // }
-    // myChart.hideLoading();    //隐藏加载动画
-    // myChart.setOption({        //载入数据
-    //     xAxis: {
-    //         data: durations    //填入X轴数据
-    //     },
-    //     series: [
-    //         {
-    //             type:'line',
-    //             data:current_tds
-    //         }
-    //     ]
-    // });
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+        enabled: false
+        }
+    },
+    credits: {
+        enabled: false
+    }
+    });
 </script>

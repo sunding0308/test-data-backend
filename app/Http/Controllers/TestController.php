@@ -31,7 +31,7 @@ class TestController extends Controller
         $durations = $test->datas->pluck('duration')->map(function ($item, $key) {
             return $item / 1000;
         });
-        $currents = $test->datas->pluck('current')->toJson();
+        $currents = $test->datas->pluck('current');
 
         return view('show', compact('test', 'durations', 'currents'));
     }
