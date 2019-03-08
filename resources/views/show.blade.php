@@ -24,7 +24,7 @@
                     <span class="name">类型</span>
                     <span class="value">{{ $test->type }}</span>
                 </div>
-                <div class="single-setting">
+                <div class="single-setting-date">
                     <image class="icon" src="/images/icon_time.png"></image>
                     <span class="name">周期</span>
                     <span class="value">{{ $test->cycle }}</span>
@@ -50,7 +50,7 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     var durations = {{ $durations }}
-    var currents = {!! $currents !!}
+    var currents = {{ $currents }}
     Highcharts.chart('chart',{
     chart: {
         type: 'line',
