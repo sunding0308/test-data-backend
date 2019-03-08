@@ -49,8 +49,8 @@
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
-    var durations = {{ $durations }}
-    var currents = {{ $currents }}
+    var durations = {!! $durations !!}
+    var currents = {!! $currents !!}
     Highcharts.chart('chart',{
     chart: {
         type: 'line',
