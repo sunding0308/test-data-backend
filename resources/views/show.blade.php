@@ -67,7 +67,7 @@
         marker: {
             enabled: false
         },
-        // lineWidth: 1,
+        lineWidth: 1,
         enableMouseTracking: false
         }
     },
