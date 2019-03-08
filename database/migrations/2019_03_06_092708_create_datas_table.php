@@ -18,7 +18,7 @@ class CreateDatasTable extends Migration
             $table->bigInteger('test_id')->unsigned()->index();
             $table->integer('duration')->unsigned();
             $table->integer('current');
-            $table->string('level')->nullable();
+            $table->integer('level')->nullable();
             $table->timestamps();
 
             $table->foreign('test_id')->references('id')->on('tests')->onUpdate('CASCADE')->onDelete('RESTRICT');
