@@ -27,11 +27,12 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        $test->load('datas');
-        $durations = $test->datas->pluck('duration')->map(function ($item, $key) {
+        $datas = collect(json_decode($test->datas));
+
+        $durations = $datas->pluck('duration')->map(function ($item, $key) {
             return $item / 1000;
         })->toJson();
-        $currents = $test->datas->pluck('current')->map(function ($item, $key) {
+        $currents = $datas->pluck('current')->map(function ($item, $key) {
             return intval($item);
         })->toJson();
 

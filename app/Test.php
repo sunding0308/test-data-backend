@@ -12,16 +12,6 @@ class Test extends Model
      * @var array
      */
     protected $fillable = [
-        'device', 'date', 'type', 'cycle', 'level'
+        'device', 'date', 'type', 'datas', 'cycle', 'level'
     ];
-
-    /**
-     * Relationship: Test has many datas.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function datas()
-    {
-        return $this->hasMany(Data::class, 'test_id', 'id');
-    }
 }

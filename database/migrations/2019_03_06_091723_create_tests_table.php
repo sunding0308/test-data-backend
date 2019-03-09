@@ -18,6 +18,7 @@ class CreateTestsTable extends Migration
             $table->string('device');
             $table->string('date');
             $table->string('type');
+            $table->longText('datas');
             $table->string('cycle');
             $table->string('level')->nullable();
             $table->timestamps();

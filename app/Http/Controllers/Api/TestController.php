@@ -14,11 +14,10 @@ class TestController extends Controller
             'device' => $request->device,
             'date' => $request->date,
             'type' => $request->testType,
+            'datas' => collect($request->datas)->toJson(),
             'cycle' => $request->testCycle,
             'level' => $request->level,
         ]);
-
-        $test->datas()->createMany($request->datas);
         
         return response()->json(['status' => 'success']);
     }
